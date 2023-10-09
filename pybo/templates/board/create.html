@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="contents">
+   <form action="{% url "pybo:write" %}" method="POST">
+    {% csrf_token %}
+
+    {% for field in form %}
+     <div class="fieldWrapper m-2">
+      {{ field.label_tag }} {{ field }}
+      {% for error in field.errors %}
+       <div id="content-help" class="form-text text-danger">{{ field.errors }}</div>
+      {% endfor %}
+     </div>
+    {% endfor %}
+
+    <div class="mb-3 p-3">
+     <div style="float:right">
+      <button type="submit" class="btn btn-outline-success">작성</button>
+     </div>
+    </div>
+   </form>
+  </div>
+</div>
